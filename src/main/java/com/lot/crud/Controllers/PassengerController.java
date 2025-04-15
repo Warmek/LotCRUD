@@ -1,4 +1,4 @@
-package com.lot.crud;
+package com.lot.crud.Controllers;
 
 import java.util.List;
 
@@ -9,6 +9,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
+import com.lot.crud.Models.Passenger;
+import com.lot.crud.Repositories.PassengerRepository;
+import com.lot.crud.Exceptions.PassengerNotFoundException;
 
 @RestController
 class PassengerController {
@@ -38,7 +41,7 @@ class PassengerController {
 	Passenger one(@PathVariable Long id) {
 
 		return repository.findById(id)
-				.orElseThrow(() -> new CustomerNotFoundException(id));
+				.orElseThrow(() -> new PassengerNotFoundException(id));
 	}
 
 	@PutMapping("passengers/{id}")

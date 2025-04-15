@@ -1,4 +1,4 @@
-package com.lot.crud;
+package com.lot.crud.Models;
 
 import java.util.Objects;
 
@@ -7,7 +7,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 
 @Entity
-class Passenger {
+public class Passenger {
 	private @Id @GeneratedValue Long id;
 	private String firstName;
 	private String lastName;

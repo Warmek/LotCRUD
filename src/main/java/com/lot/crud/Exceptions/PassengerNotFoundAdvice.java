@@ -1,4 +1,4 @@
-package com.lot.crud;
+package com.lot.crud.Exceptions;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -8,9 +8,9 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 @RestControllerAdvice
 class PassengerNotFoundAdvice {
 
-	@ExceptionHandler(CustomerNotFoundException.class)
+	@ExceptionHandler(PassengerNotFoundException.class)
 	@ResponseStatus(HttpStatus.NOT_FOUND)
-	String passengerNotFoundHandler(CustomerNotFoundException ex) {
+	String passengerNotFoundHandler(PassengerNotFoundException ex) {
 		return ex.getMessage();
 	}
 }
