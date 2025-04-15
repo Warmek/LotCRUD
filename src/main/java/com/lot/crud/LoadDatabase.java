@@ -7,6 +7,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 import com.lot.crud.Repositories.PassengerRepository;
+import com.lot.crud.Models.Passenger;
 
 @Configuration
 class LoadDatabase {
@@ -17,6 +18,8 @@ class LoadDatabase {
 	CommandLineRunner initDatabase(PassengerRepository repository) {
 
 		return args -> {
+			// log.info("Preloading " + repository
+			// .save(new Passenger("Bilbo", "Baggins", "bb@hill.com", "000000000")));
 		};
 	}
 }
