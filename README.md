@@ -4,11 +4,11 @@ This project aims to create a simple REST api for managing tickets for an airpor
 ## Installation
 ### Prerequisites
 - Java 17
-- Setup email at: https://myaccount.google.com/apppasswords
+- Setup email at: [Link](https://myaccount.google.com/apppasswords)
 ### Installation
 - Clone repository with git
 ```bash
-git clone [link to repo]
+git clone https://github.com/Warmek/LotCRUD.git
 ```
 - Run the project
 For windows:
