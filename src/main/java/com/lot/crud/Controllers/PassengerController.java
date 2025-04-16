@@ -22,13 +22,10 @@ class PassengerController {
 		this.repository = repository;
 	}
 
-	// Aggregate root
-	// tag::get-aggregate-root[]
 	@GetMapping("passengers")
 	List<Passenger> all() {
 		return repository.findAll();
 	}
-	// end::get-aggregate-root[]
 
 	@PostMapping("passengers")
 	Passenger newPassenger(@RequestBody Passenger newPassenger) {
@@ -64,4 +61,6 @@ class PassengerController {
 	void deletePassenger(@PathVariable Long id) {
 		repository.deleteById(id);
 	}
+
+	//
 }

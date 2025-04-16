@@ -8,7 +8,9 @@ import jakarta.persistence.Id;
 
 @Entity
 public class Passenger {
-	private @Id @GeneratedValue Long id;
+	@Id
+	@GeneratedValue
+	private Long id;
 	private String firstName;
 	private String lastName;
 	private String email;
@@ -21,6 +23,7 @@ public class Passenger {
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.email = email;
+		this.phoneNumber = phoneNumber;
 	}
 
 	public String getFirstName() {
