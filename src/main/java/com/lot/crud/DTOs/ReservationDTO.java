@@ -1,5 +1,10 @@
 package com.lot.crud.DTOs;
 
+/**
+ * ReservationDTO
+ * Data Transfer Object that helps to create a
+ * {@link com.lot.crud.Models.Reservation}
+ */
 public class ReservationDTO {
 	public Long flightNumber;
 	public Long passengerNumber;

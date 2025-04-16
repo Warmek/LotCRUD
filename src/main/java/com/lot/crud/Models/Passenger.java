@@ -2,13 +2,18 @@ package com.lot.crud.Models;
 
 import java.util.Objects;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
 import com.lot.crud.regexutils;
 import com.lot.crud.Exceptions.InvalidEmailException;
 import com.lot.crud.Exceptions.InvalidPhoneException;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.Id;
+
+/**
+ * Passenger
+ * This class models Passenger info.
+ */
 @Entity
 public class Passenger {
 	@Id
@@ -19,13 +24,12 @@ public class Passenger {
 	private String email;
 	private String phoneNumber;
 
-	Passenger() {
-	}
-
 	public Passenger(String firstName, String lastName, String email, String phoneNumber) {
+		// Validate Email
 		if (!regexutils.patternMatches(email, "^(.+)@(\\S+)$")) {
 			throw new InvalidEmailException(email);
 		}
+		// Validate Phone Number
 		if (!regexutils.patternMatches(phoneNumber, "^\\d{9}$")) {
 			throw new InvalidPhoneException(phoneNumber);
 		}
@@ -35,6 +39,10 @@ public class Passenger {
 		this.phoneNumber = phoneNumber;
 	}
 
+	Passenger() {
+	}
+
+	// Setter and Getters
 	public String getFirstName() {
 		return firstName;
 	}
@@ -56,6 +64,7 @@ public class Passenger {
 	}
 
 	public void setEmail(String email) {
+		// Validate Email
 		if (!regexutils.patternMatches(email, "^(.+)@(\\S+)$")) {
 			throw new InvalidEmailException(email);
 		}
@@ -67,6 +76,7 @@ public class Passenger {
 	}
 
 	public void setPhoneNumber(String phoneNumber) {
+		// Validate Phone Number
 		if (!regexutils.patternMatches(phoneNumber, "^\\d{9}$")) {
 			throw new InvalidPhoneException(phoneNumber);
 		}

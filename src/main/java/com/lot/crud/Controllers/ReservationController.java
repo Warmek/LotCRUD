@@ -39,6 +39,7 @@ class ReservationController {
 	@Autowired
 	private JavaMailSender mailSender;
 
+	// Method to send an email
 	public void sendEmail(String to, String subject, String body) {
 		SimpleMailMessage message = new SimpleMailMessage();
 		message.setFrom(env.getProperties().getProperty("spring.mail.username"));

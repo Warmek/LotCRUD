@@ -8,6 +8,10 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 
+/**
+ * Reservation
+ * This class models a reservation.
+ */
 @Entity
 public class Reservation {
 	@Id
@@ -36,9 +40,11 @@ public class Reservation {
 		this.flightNumber = flightNumber;
 		this.seatNumber = seatNumber;
 
+		// Validate Email
 		if (!regexutils.patternMatches(passangerEmail, "^(.+)@(\\S+)$")) {
 			throw new InvalidEmailException(passangerEmail);
 		}
+		// Validate PhoneNumber
 		if (!regexutils.patternMatches(passangerPhoneNumber, "^\\d{9}$")) {
 			throw new InvalidPhoneException(passangerPhoneNumber);
 		}
@@ -50,6 +56,7 @@ public class Reservation {
 		this.didTakeoff = didTakeoff;
 	}
 
+	// Setter and Getters
 	public Long getReservationNumber() {
 		return reservationNumber;
 	}
@@ -95,6 +102,7 @@ public class Reservation {
 	}
 
 	public void setPassangerEmail(String passangerEmail) {
+		// Validate Email
 		if (!regexutils.patternMatches(passangerEmail, "^(.+)@(\\S+)$")) {
 			throw new InvalidEmailException(passangerEmail);
 		}
@@ -106,6 +114,7 @@ public class Reservation {
 	}
 
 	public void setPassangerPhoneNumber(String passangerPhoneNumber) {
+		// Validate Phone Number
 		if (!regexutils.patternMatches(passangerPhoneNumber, "^\\d{9}$")) {
 			throw new InvalidPhoneException(passangerPhoneNumber);
 		}

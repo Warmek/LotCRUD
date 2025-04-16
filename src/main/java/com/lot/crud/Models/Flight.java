@@ -4,6 +4,10 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 
+/**
+ * Flight
+ * This class models flight info.
+ */
 @Entity
 public class Flight {
 	@Id
@@ -13,7 +17,7 @@ public class Flight {
 	private String destination;
 	private Long flightTime;
 	private boolean oneWay;
-	private Long seatNumber;
+	private Long seatNumber; // Reservation
 
 	public Flight() {
 	}
@@ -25,6 +29,7 @@ public class Flight {
 		this.oneWay = oneWay;
 	}
 
+	// Setters and Getters
 	public String getOrigin() {
 		return origin;
 	}
