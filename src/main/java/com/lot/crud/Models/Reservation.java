@@ -1,5 +1,9 @@
 package com.lot.crud.Models;
 
+import com.lot.crud.Exceptions.InvalidEmailException;
+import com.lot.crud.Exceptions.InvalidPhoneException;
+import com.lot.crud.regexutils;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
@@ -32,6 +36,12 @@ public class Reservation {
 		this.flightNumber = flightNumber;
 		this.seatNumber = seatNumber;
 
+		if (!regexutils.patternMatches(passangerEmail, "^(.+)@(\\S+)$")) {
+			throw new InvalidEmailException(passangerEmail);
+		}
+		if (!regexutils.patternMatches(passangerPhoneNumber, "^\\d{9}$")) {
+			throw new InvalidPhoneException(passangerPhoneNumber);
+		}
 		this.passengerId = passengerId;
 		this.passangerName = passangerName;
 		this.passangerLastName = passangerLastName;
@@ -85,6 +95,9 @@ public class Reservation {
 	}
 
 	public void setPassangerEmail(String passangerEmail) {
+		if (!regexutils.patternMatches(passangerEmail, "^(.+)@(\\S+)$")) {
+			throw new InvalidEmailException(passangerEmail);
+		}
 		this.passangerEmail = passangerEmail;
 	}
 
@@ -93,6 +106,9 @@ public class Reservation {
 	}
 
 	public void setPassangerPhoneNumber(String passangerPhoneNumber) {
+		if (!regexutils.patternMatches(passangerPhoneNumber, "^\\d{9}$")) {
+			throw new InvalidPhoneException(passangerPhoneNumber);
+		}
 		this.passangerPhoneNumber = passangerPhoneNumber;
 	}
 

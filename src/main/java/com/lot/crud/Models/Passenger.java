@@ -5,6 +5,9 @@ import java.util.Objects;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
+import com.lot.crud.regexutils;
+import com.lot.crud.Exceptions.InvalidEmailException;
+import com.lot.crud.Exceptions.InvalidPhoneException;
 
 @Entity
 public class Passenger {
@@ -20,6 +23,12 @@ public class Passenger {
 	}
 
 	public Passenger(String firstName, String lastName, String email, String phoneNumber) {
+		if (!regexutils.patternMatches(email, "^(.+)@(\\S+)$")) {
+			throw new InvalidEmailException(email);
+		}
+		if (!regexutils.patternMatches(phoneNumber, "^\\d{9}$")) {
+			throw new InvalidPhoneException(phoneNumber);
+		}
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.email = email;
@@ -47,6 +56,9 @@ public class Passenger {
 	}
 
 	public void setEmail(String email) {
+		if (!regexutils.patternMatches(email, "^(.+)@(\\S+)$")) {
+			throw new InvalidEmailException(email);
+		}
 		this.email = email;
 	}
 
@@ -55,6 +67,9 @@ public class Passenger {
 	}
 
 	public void setPhoneNumber(String phoneNumber) {
+		if (!regexutils.patternMatches(phoneNumber, "^\\d{9}$")) {
+			throw new InvalidPhoneException(phoneNumber);
+		}
 		this.phoneNumber = phoneNumber;
 	}
 
