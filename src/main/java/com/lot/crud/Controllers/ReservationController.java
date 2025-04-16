@@ -112,8 +112,6 @@ class ReservationController {
 		}
 	}
 
-	// Single item
-
 	// Read
 	@GetMapping("reservations/{id}")
 	ResponseEntity one(@PathVariable Long id) {
