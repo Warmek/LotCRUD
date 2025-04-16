@@ -93,13 +93,13 @@ class ReservationController {
 					passengerName, passengerLastName,
 					passengerEmail, passengerPhoneNumber, didTakeoff);
 
-			flight.setFlightNumber(flightNumber);
-
 			// Send Email
 			sendEmail(passengerEmail, "Your new registration",
 					"You have an reservation for flight " + newReservation.getFlightNumber()
 							+ ". Your are seated at a seat number: "
 							+ newReservation.getSeatNumber());
+			flight.setSeatNumber(seatNumber);
+
 			flightRepository.save(flight);
 
 			reservationRepository.save(newReservation);
