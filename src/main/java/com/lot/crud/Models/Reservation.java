@@ -8,13 +8,14 @@ import jakarta.persistence.Id;
 public class Reservation {
 	@Id
 	@GeneratedValue
-	private int reservationNumber;
+	private Long reservationNumber;
 
 	// Flight
 	private Long flightNumber;
-	private int seatNumber;
+	private Long seatNumber;
 
 	// Passenger
+	private Long passengerId;
 	private String passangerName;
 	private String passangerLastName;
 	private String passangerEmail;
@@ -25,11 +26,13 @@ public class Reservation {
 	public Reservation() {
 	}
 
-	public Reservation(Long flightNumber, int seatNumber, String passangerName,
+	public Reservation(Long flightNumber, Long seatNumber, Long passengerId, String passangerName,
 			String passangerLastName, String passangerEmail, String passangerPhoneNumber,
 			boolean didTakeoff) {
 		this.flightNumber = flightNumber;
 		this.seatNumber = seatNumber;
+
+		this.passengerId = passengerId;
 		this.passangerName = passangerName;
 		this.passangerLastName = passangerLastName;
 		this.passangerEmail = passangerEmail;
@@ -37,11 +40,11 @@ public class Reservation {
 		this.didTakeoff = didTakeoff;
 	}
 
-	public int getReservationNumber() {
+	public Long getReservationNumber() {
 		return reservationNumber;
 	}
 
-	public void setReservationNumber(int reservationNumber) {
+	public void setReservationNumber(Long reservationNumber) {
 		this.reservationNumber = reservationNumber;
 	}
 
@@ -53,11 +56,11 @@ public class Reservation {
 		this.flightNumber = flightNumber;
 	}
 
-	public int getSeatNumber() {
+	public Long getSeatNumber() {
 		return seatNumber;
 	}
 
-	public void setSeatNumber(int seatNumber) {
+	public void setSeatNumber(Long seatNumber) {
 		this.seatNumber = seatNumber;
 	}
 
@@ -99,6 +102,14 @@ public class Reservation {
 
 	public void setDidTakeoff(boolean didTakeoff) {
 		this.didTakeoff = didTakeoff;
+	}
+
+	public Long getPassengerId() {
+		return passengerId;
+	}
+
+	public void setPassengerId(Long passengerId) {
+		this.passengerId = passengerId;
 	}
 
 }

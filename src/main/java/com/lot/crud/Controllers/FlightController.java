@@ -2,6 +2,8 @@ package com.lot.crud.Controllers;
 
 import java.util.List;
 
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -36,10 +38,13 @@ class FlightController {
 	// Single item
 
 	@GetMapping("flights/{id}")
-	Flight one(@PathVariable Long id) {
-
-		return repository.findById(id)
-				.orElseThrow(() -> new FlightNotFoundException(id));
+	ResponseEntity one(@PathVariable Long id) {
+		try {
+			return new ResponseEntity<>(repository.findById(id)
+					.orElseThrow(() -> new FlightNotFoundException(id)), HttpStatus.OK);
+		} catch (Exception e) {
+			return new ResponseEntity<>(e.getMessage(), HttpStatus.NOT_FOUND);
+		}
 	}
 
 	@PutMapping("flights/{id}")
@@ -64,6 +69,4 @@ class FlightController {
 	void deleteFlight(@PathVariable Long id) {
 		repository.deleteById(id);
 	}
-
-	//
 }

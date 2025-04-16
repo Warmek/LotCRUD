@@ -11,14 +11,14 @@ public class Flight {
 	private Long flightNumber;
 	private String origin;
 	private String destination;
-	private int flightTime;
+	private Long flightTime;
 	private boolean oneWay;
-	private Integer seatNumber;
+	private Long seatNumber;
 
 	public Flight() {
 	}
 
-	public Flight(String origin, String destination, int flightTime, boolean oneWay) {
+	public Flight(String origin, String destination, Long flightTime, boolean oneWay) {
 		this.origin = origin;
 		this.destination = destination;
 		this.flightTime = flightTime;
@@ -41,11 +41,11 @@ public class Flight {
 		this.destination = destination;
 	}
 
-	public int getFlightTime() {
+	public Long getFlightTime() {
 		return flightTime;
 	}
 
-	public void setFlightTime(int flightTime) {
+	public void setFlightTime(Long flightTime) {
 		this.flightTime = flightTime;
 	}
 
@@ -57,11 +57,11 @@ public class Flight {
 		this.oneWay = oneWay;
 	}
 
-	public Integer getSeatNumber() {
+	public Long getSeatNumber() {
 		return seatNumber;
 	}
 
-	public void setSeatNumber(Integer seatNumber) {
+	public void setSeatNumber(Long seatNumber) {
 		this.seatNumber = seatNumber;
 	}
 
