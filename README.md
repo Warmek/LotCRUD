@@ -76,4 +76,4 @@ curl -X DELETE localhost:8080/flights/1
 curl -X DELETE localhost:8080/reservations/1
 ```
 ## For potential improvments to the project, look at: 
-(my commentary)[mycomment.md]
+[my commentary](mycomment.md)
