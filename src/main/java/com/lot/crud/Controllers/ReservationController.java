@@ -108,8 +108,7 @@ class ReservationController {
 					HttpStatus.CREATED);
 
 		} catch (Exception e) {
-			throw e;
-			// return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
+			return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
 		}
 	}
 
@@ -133,9 +132,22 @@ class ReservationController {
 		return new ResponseEntity(reservationRepository.findById(id)
 				.map(reservation -> {
 					reservation.setReservationNumber(newReservation.getReservationNumber());
+					sendEmail(newReservation.getPassangerEmail(),
+							"Your registration has been Updated",
+							"You have an reservation for flight "
+									+ newReservation.getFlightNumber()
+									+ ". Your are seated at a seat number: "
+									+ newReservation.getSeatNumber());
+
 					return reservationRepository.save(reservation);
 				})
 				.orElseGet(() -> {
+					sendEmail(newReservation.getPassangerEmail(), "Your new registration",
+							"You have an reservation for flight "
+									+ newReservation.getFlightNumber()
+									+ ". Your are seated at a seat number: "
+									+ newReservation.getSeatNumber());
+
 					return reservationRepository.save(newReservation);
 				}), HttpStatus.OK);
 	}
